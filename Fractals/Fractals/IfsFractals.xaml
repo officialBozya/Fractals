@@ -2,6 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:forms="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+             xmlns:xForms="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              x:Class="Fractals.IfsFractals"
              Background="linear-gradient(270deg, #FFD5D5 0%, #FFEBEB 80%, #E3E3E3 100%);">
     <ContentPage.Content>
@@ -25,11 +27,37 @@
                                     RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.82}">
 
                 </forms:SKCanvasView>
-                <Picker RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.05}"
-                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.15}"
-                        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.25}"
-                        
-                        x:Name="PresetPicker">
+                <buttons:SfButton x:Name="Popup"
+                                  RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.05}"
+                                  RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.15}"
+                                  RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.25}"
+                                  Text="Choose preset" FontSize="32">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="CommonStates">
+
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="Style" Value="{StaticResource normalButtonStyle}" />
+                                </VisualState.Setters>
+                            </VisualState>
+
+                            <VisualState x:Name="MouseOver">
+                                <VisualState.Setters>
+                                    <Setter Property="Style" Value="{StaticResource mouseOverButtonStyle}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                </buttons:SfButton>
+                <xForms:SfPicker 
+                                     x:Name="PresetPicker"
+                                     HeaderText="Select your Area"
+                                     HeightRequest="350"
+                                     PickerHeight="250"
+                                     PickerMode="Dialog"
+                                     PickerWidth="280"
+                                     ShowColumnHeader="True"
+                                     WidthRequest="300">
                     <VisualStateManager.VisualStateGroups>
                         <VisualStateGroup x:Name="CommonStates">
 
@@ -39,7 +67,7 @@
                                 </VisualState.Setters>
                             </VisualState>
 
-                            <VisualState x:Name="Focused">
+                            <VisualState x:Name="MouseOver">
                                 <VisualState.Setters>
                                     <Setter Property="Style" Value="{StaticResource focusedPickerStyle}" />
                                 </VisualState.Setters>
@@ -53,7 +81,7 @@
 
                         </VisualStateGroup>
                     </VisualStateManager.VisualStateGroups>
-                </Picker>
+                </xForms:SfPicker>
             </RelativeLayout>
             <Button RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.004}"
                     RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.1}"
