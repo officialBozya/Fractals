@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+             x:Class="Fractals.IfsFractals"
+             Background="linear-gradient(270deg, #FFD5D5 0%, #FFEBEB 80%, #E3E3E3 100%);">
+    <ContentPage.Content>
+        <RelativeLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <BoxView RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.05}"
+                     RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.08}"
+                     RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.90}"
+                     RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.75}" 
+                     CornerRadius="31"
+                     Background="linear-gradient(270deg, #FFFFFF 0%, #FFD1D1 100%);"></BoxView>
+            <RelativeLayout RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.05}"
+                            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.08}"
+                            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.90}"
+                            RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.75}">
+
+            </RelativeLayout>
+            <Button RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.004}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.1}"
+                    x:Name="BackButton" Text="◄" FontFamily="Arial" TextColor="#FFE4E4" FontSize="42" Background="#ffffff" CornerRadius="32" WidthRequest="64" HeightRequest="64"></Button>
+            <Label RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.32}"
+                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.89}"
+                   FontFamily="Open Sans Hebrew" FontSize="72" VerticalOptions="EndAndExpand" 
+                   HorizontalOptions="CenterAndExpand" TextColor="#333333">Fractal is your life</Label>
+        </RelativeLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -13,6 +13,12 @@ namespace Fractals
         public MainPage()
         {
             InitializeComponent();
+            Content.FindByName<Button>("ToIfsFractalsButton").Clicked += ToIfsFractals;
+        }
+
+        public void ToIfsFractals(object sender, EventArgs eventArgs)
+        {
+            Navigation.PushModalAsync(new IfsFractals());
         }
     }
 }

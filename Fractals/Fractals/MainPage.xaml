@@ -3,10 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Fractals.MainPage"
              Background="linear-gradient(270deg, #FFD5D5 0%, #FFEBEB 80%, #E3E3E3 100%);">
-    
-            <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="End" >
-        <Label FontFamily="Open Sans Hebrew" FontSize="72" VerticalOptions="End" HorizontalOptions="Center" TextColor="#333333">Fractal is your life</Label>
-            </StackLayout>
-    
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Button Text="button" Style="{StaticResource normalButtonStyle}"></Button>
+            <Button x:Name="ToIfsFractalsButton" Text="button" Style="{StaticResource normalButtonStyle}"></Button>
+            <Button Text="button" Style="{StaticResource normalButtonStyle}"></Button>
+            <Button Text="button" Style="{StaticResource normalButtonStyle}"></Button>
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="End" Column="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="1" Grid.ColumnSpan="2" FontFamily="Open Sans Hebrew" FontSize="72" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" TextColor="#333333">Fractal is your life</Label>
+                <Button Grid.Column="3" Text="button" Style="{StaticResource smallButtonStyle}"></Button>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>  
 
 </ContentPage>
