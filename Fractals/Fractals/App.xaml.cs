@@ -8,6 +8,7 @@ namespace Fractals
     {
         public App()
         {
+            Device.SetFlags(new string[]{ "Brush_Experimental"});
             InitializeComponent();
 
             MainPage = new MainPage();
