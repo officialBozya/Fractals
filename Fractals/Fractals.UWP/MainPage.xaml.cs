@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Syncfusion.SfPicker.XForms.UWP;
 
 namespace Fractals.UWP
 {
@@ -20,6 +21,8 @@ namespace Fractals.UWP
         public MainPage()
         {
             this.InitializeComponent();
+
+            SfPickerRenderer.Init();
 
             LoadApplication(new Fractals.App());
         }

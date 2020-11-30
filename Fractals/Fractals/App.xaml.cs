@@ -8,6 +8,8 @@ namespace Fractals
     {
         public App()
         {
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MzYwMjU1QDMxMzgyZTMzMmUzMFFQZHkxNHRFU04zTVhFS0UrYzk2QzQ4UEtaaE41ZmFRdTlMYmM3a0xibUE9");
+
             Device.SetFlags(new string[]{ "Brush_Experimental"});
             InitializeComponent();
 

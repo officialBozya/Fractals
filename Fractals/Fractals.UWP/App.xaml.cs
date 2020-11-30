@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
@@ -14,6 +15,10 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Syncfusion.Buttons.XForms;
+using Syncfusion.SfPicker.XForms.UWP;
+using Syncfusion.XForms.UWP.Border;
+using Syncfusion.XForms.UWP.Buttons;
 
 namespace Fractals.UWP
 {
@@ -56,6 +61,13 @@ namespace Fractals.UWP
                 rootFrame = new Frame();
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
+
+                List<Assembly> assembliesToInclude = new List<Assembly>();
+                //Now, add all the assemblies that your app uses 
+                assembliesToInclude.Add(typeof(SfButtonRenderer).GetTypeInfo().Assembly);
+                assembliesToInclude.Add(typeof(SfBorderRenderer).GetTypeInfo().Assembly);
+
+                assembliesToInclude.Add(typeof(SfPickerRenderer).GetTypeInfo().Assembly);
 
                 Xamarin.Forms.Forms.Init(e);
 

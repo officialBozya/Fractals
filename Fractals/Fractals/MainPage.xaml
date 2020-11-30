@@ -1,14 +1,83 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              x:Class="Fractals.MainPage"
              Background="linear-gradient(270deg, #FFD5D5 0%, #FFEBEB 80%, #E3E3E3 100%);">
     <ContentPage.Content>
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <Button Text="button" Style="{StaticResource normalButtonStyle}"></Button>
-            <Button x:Name="ToIfsFractalsButton" Text="button" Style="{StaticResource normalButtonStyle}"></Button>
-            <Button Text="button" Style="{StaticResource normalButtonStyle}"></Button>
-            <Button Text="button" Style="{StaticResource normalButtonStyle}"></Button>
+            <buttons:SfButton Text="button">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+
+                        <VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="Style" Value="{StaticResource normalButtonStyle}" />
+                            </VisualState.Setters>
+                        </VisualState>
+
+                        <VisualState x:Name="MouseOver">
+                            <VisualState.Setters>
+                                <Setter Property="Style" Value="{StaticResource mouseOverButtonStyle}" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+            </buttons:SfButton>
+            <buttons:SfButton x:Name="ToIfsFractalsButton" Text="IFS Fractals">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+
+                        <VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="Style" Value="{StaticResource normalButtonStyle}" />
+                            </VisualState.Setters>
+                        </VisualState>
+
+                        <VisualState x:Name="MouseOver">
+                            <VisualState.Setters>
+                                <Setter Property="Style" Value="{StaticResource mouseOverButtonStyle}" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+            </buttons:SfButton>
+            <buttons:SfButton Text="button" >
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+
+                        <VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="Style" Value="{StaticResource normalButtonStyle}" />
+                            </VisualState.Setters>
+                        </VisualState>
+
+                        <VisualState x:Name="MouseOver">
+                            <VisualState.Setters>
+                                <Setter Property="Style" Value="{StaticResource mouseOverButtonStyle}" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+            </buttons:SfButton>
+            <buttons:SfButton Text="button">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+
+                        <VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="Style" Value="{StaticResource normalButtonStyle}" />
+                            </VisualState.Setters>
+                        </VisualState>
+
+                        <VisualState x:Name="MouseOver">
+                            <VisualState.Setters>
+                                <Setter Property="Style" Value="{StaticResource mouseOverButtonStyle}" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+            </buttons:SfButton>
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="End" Column="4">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
@@ -17,7 +86,7 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Label Grid.Column="1" Grid.ColumnSpan="2" FontFamily="Open Sans Hebrew" FontSize="72" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" TextColor="#333333">Fractal is your life</Label>
-                <Button Grid.Column="3" Text="button" Style="{StaticResource smallButtonStyle}"></Button>
+                <buttons:SfButton Grid.Column="3" Text="button" Style="{StaticResource smallButtonStyle}"></buttons:SfButton>
             </Grid>
         </StackLayout>
     </ContentPage.Content>  

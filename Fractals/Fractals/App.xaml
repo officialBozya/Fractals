@@ -1,26 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              x:Class="Fractals.App">
     <Application.Resources>
-        <Style x:Key="baseButtonStyle" TargetType="Button">
-            <Setter Property="FontFamily" Value="Open Sans"/> 
+        <Style x:Key="baseButtonStyle" TargetType="buttons:SfButton">
+            <Setter Property="FontSize" Value="72"/>
             <Setter Property="TextColor" Value="#7A7A7A"/>
             <Setter Property="CornerRadius" Value="31"/> 
             <Setter Property="VerticalOptions" Value="CenterAndExpand"/> 
             <Setter Property="Margin" Value="20"/>
         </Style>
 
-        <Style x:Key="normalButtonStyle" BaseResourceKey="baseButtonStyle" TargetType="Button">
+        <Style x:Key="normalButtonStyle" BaseResourceKey="baseButtonStyle" TargetType="buttons:SfButton">
             <Setter Property="BackgroundColor" Value="#ffffff"/>
-            <Setter Property="FontSize" Value="72"/>
+        </Style>
+
+        <Style x:Key="mouseOverButtonStyle" BaseResourceKey="baseButtonStyle" TargetType="buttons:SfButton">
+            <Setter Property="BackgroundColor" Value="#FFF4F4"/>
+            <Setter Property="BorderWidth" Value="0"/>
         </Style>
 
         <Style x:Key="smallButtonStyle" BaseResourceKey="baseButtonStyle" TargetType="Button">
-            <Setter Property="FontSize" Value="36"/>
+            
             <Setter Property="BackgroundColor" Value="#ffffff"/>
             <Setter Property="VerticalOptions" Value="Start"/>
             <Setter Property="HorizontalOptions" Value="EndAndExpand"/>
+        </Style>
+
+        <Style x:Key="basePickerStyle" TargetType="Picker">
+            <Setter Property="FontFamily" Value="Open Sans"/>
+            <Setter Property="FontSize" Value="36"/>
+            
+            
+            <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+            <Setter Property="Margin" Value="20"/>
+        </Style>
+
+        <Style x:Key="normalPickerStyle" BaseResourceKey="basePickerStyle" TargetType="Picker">
+            <Setter Property="BackgroundColor" Value="#F2DBDB"/>
+        </Style>
+
+        <Style x:Key="focusedPickerStyle" BaseResourceKey="basePickerStyle" TargetType="Picker">
+            <Setter Property="BackgroundColor" Value="#EDB3B3"/>
+        </Style>
+
+        <Style x:Key="selectedPickerStyle" BaseResourceKey="basePickerStyle" TargetType="Picker">
+            <Setter Property="BackgroundColor" Value="#FF8686"/>
         </Style>
     </Application.Resources>
 </Application>

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Syncfusion.XForms.Buttons;
 using Xamarin.Forms;
 
 namespace Fractals
@@ -13,7 +14,7 @@ namespace Fractals
         public MainPage()
         {
             InitializeComponent();
-            Content.FindByName<Button>("ToIfsFractalsButton").Clicked += ToIfsFractals;
+            ((SfButton)Content.FindByName("ToIfsFractalsButton")).Clicked += ToIfsFractals;
         }
 
         public void ToIfsFractals(object sender, EventArgs eventArgs)
