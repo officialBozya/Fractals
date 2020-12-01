@@ -18,6 +18,7 @@ namespace Fractals
         {
             InitializeComponent();
             picker = Content.FindByName<SfPicker>("PresetPicker");
+            picker.ItemsSource = new List<String> {"koch", "dragon", "fern"};
             Content.FindByName<Button>("BackButton").Clicked += ToStart;
             Content.FindByName<SfButton>("Popup").Clicked += OpenPopup;
         }

@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:xForms="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
+             xmlns:controls="clr-namespace:Fractals.Controls;assembly=Fractals"
              x:Class="Fractals.App">
     <Application.Resources>
         <Style x:Key="baseButtonStyle" TargetType="buttons:SfButton">
@@ -23,7 +24,7 @@
         </Style>
 
         <Style x:Key="smallButtonStyle" BaseResourceKey="baseButtonStyle" TargetType="buttons:SfButton">
-            
+            <Setter Property="BorderWidth" Value="0"/>
             <Setter Property="BackgroundColor" Value="#ffffff"/>
             <Setter Property="VerticalOptions" Value="Start"/>
             <Setter Property="HorizontalOptions" Value="EndAndExpand"/>
@@ -44,6 +45,59 @@
 
         <Style x:Key="selectedPickerStyle" BaseResourceKey="basePickerStyle" TargetType="xForms:SfPicker">
             <Setter Property="BackgroundColor" Value="#FF8686"/>
+        </Style>
+
+        <Style x:Key="paramLabel" TargetType="Label">
+            <Setter Property="TextColor" Value="#333333"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontFamily" Value="Open-Sans"/>
+            <Setter Property="VerticalOptions" Value="End"/>
+        </Style>
+
+        <Style x:Key="normalParamEntry" TargetType="controls:StandardEntry">
+            <Setter Property="FontFamily" Value="Open-Sans"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="TextColor" Value="#333333"/>
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="WidthRequest" Value="35"/>
+            <Setter Property="HeightRequest" Value="32"/>
+            <Setter Property="Keyboard" Value="Numeric"/>
+            <Setter Property="VerticalOptions" Value="Start"/>
+        </Style>
+
+        <Style x:Key="selectedParamEntry" TargetType="controls:StandardEntry">
+            <Setter Property="FontFamily" Value="Open-Sans"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="TextColor" Value="#333333"/>
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="WidthRequest" Value="35"/>
+            <Setter Property="HeightRequest" Value="32"/>
+            <Setter Property="Keyboard" Value="Numeric"/>
+            <Setter Property="VerticalOptions" Value="Start"/>
+        </Style>
+        <Style x:Key="VisualStatesForEntry" TargetType="controls:StandardEntry">
+
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroup x:Name="CommonStates">
+
+                    <VisualState x:Name="Normal">
+                        <VisualState.Setters>
+                            <Setter Property="Style" Value="{StaticResource normalParamEntry}" />
+                        </VisualState.Setters>
+                    </VisualState>
+
+                    <VisualState x:Name="Focused">
+                        <VisualState.Setters>
+                            <Setter Property="Style" Value="{StaticResource selectedParamEntry}" />
+                        </VisualState.Setters>
+                    </VisualState>
+
+                </VisualStateGroup>
+            </Setter>
         </Style>
     </Application.Resources>
 </Application>
