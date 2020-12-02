@@ -150,12 +150,12 @@ namespace Fractals
                 {
                     var start_x = canvasView.Width / 4;
                     var start_y = canvasView.Height / 4;
-                    DrawDragonLine(bitmap, (int) depth - 1, Direction.Right, (float) start_x, (float) start_y,
+                    DrawDragonLine(bitmap, (int) depth, Direction.Right, (float) start_x, (float) start_y,
                         (float) canvasView.Width / 2.8f, (float) canvasView.Height / 2.8f);
                 }
                 else
                 {
-                    DrawSnowflake(bitmap, (int) depth - 1);
+                    DrawSnowflake(bitmap, (int) depth);
                 }
             });
             canvasView.InvalidateSurface();
