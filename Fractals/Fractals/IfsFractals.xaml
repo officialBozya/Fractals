@@ -22,13 +22,11 @@
                 <Label RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.38}"
                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.03}"
                        FontFamily="Open Sans" FontSize="64" TextColor="#000000">IFS fractals</Label>
-                <forms:SKCanvasView RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.35}"
+                <forms:SKCanvasView x:Name="CanvasView" 
+                                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.5}"
                                     RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.15}"
-                                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.635}"
-                                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.82}"
-                                    BackgroundColor="AliceBlue">
-
-                </forms:SKCanvasView>
+                                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.485}"
+                                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.82}"/>
                 <buttons:SfButton x:Name="Popup"
                                   RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.05}"
                                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.15}"
@@ -97,7 +95,7 @@
                 </Label>
                 <RelativeLayout RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.01}"
                              RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.4}"
-                             RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.33}"
+                             RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.43}"
                              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.05}">
                     <Label Style="{StaticResource paramLabel}"
                            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.04}"
@@ -322,7 +320,16 @@
                             TextColor="#FFA9A9" BackgroundColor="#FFCFCF"
                             Text="✓" FontSize="18" CornerRadius="12" WidthRequest="36" HeightRequest="36"/>
                 </RelativeLayout>
-                <Grid></Grid>
+                <BoxView RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.02}"
+                         RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5}"
+                         RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.423}"
+                         RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.45}" 
+                         BackgroundColor="#ffffff" CornerRadius="31"/>
+                <ScrollView x:Name="ParamsScrollView"
+                      RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.02}"
+                      RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.5}"
+                      RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.423}"
+                      RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.45}"/>
             </RelativeLayout>
             <Button RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.004}"
                     RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.1}"
