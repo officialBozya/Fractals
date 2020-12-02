@@ -33,32 +33,33 @@
                 </forms:SKCanvasView>
                 <buttons:SfRadioGroup x:Name="radioGroup"  RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.05}"
                                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.15}"
-                                  RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.25}"
-                                    >
+                                  RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.25}">
 
-                    <buttons:SfRadioButton x:Name="koch" Text="Koch curve"
-                                         IsChecked="True" StateChanged="KochCheckBoxClicked"/>
-                    <buttons:SfRadioButton x:Name="dragon" Text="Dragon curve"
+                    <buttons:SfRadioButton x:Name="koch" Text="Koch curve" TextColor="#333333" FontFamily="Open Sans Hebrew" FontSize="24" 
+                                           IsChecked="True" StateChanged="KochCheckBoxClicked"/>
+                    <buttons:SfRadioButton x:Name="dragon" Text="Dragon curve" FontFamily="Open Sans Hebrew" FontSize="24" TextColor="#333333"
                                       StateChanged="DragonCheckBoxClicked"/>
                 </buttons:SfRadioGroup>
 
-                <Label  Text="Count of iteration:"
+                <Label  Text="Count of iteration:" FontFamily="Open Sans Hebrew" FontSize="24" TextColor="#333333"
                                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.1}"
                                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.28}"
                                   RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.25}"/>
-                <Label  x:Name="countView" Text=""
+                <Label  x:Name="countView" Text="" FontFamily="Open Sans Hebrew" FontSize="24" TextColor="#333333"
                                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.24}"
                                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.28}"
                                   RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.25}"/>
 
                 <Slider  RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.02}"
-                                  RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.30}"
-                                  RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.31}"
+                         RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.30}"
+                         RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.31}"
                          Maximum="25"
                          Minimum="1"
                          Value="5"
+                         ThumbColor="Black"
+                         MinimumTrackColor="#333333"
+                         MaximumTrackColor="#777777"
                 ValueChanged="OnSliderValueChanged" />
-                <Grid></Grid>
             </RelativeLayout>
             <Button RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.004}"
                     RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.1}"
