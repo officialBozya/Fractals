@@ -60,14 +60,32 @@ namespace Fractals
                 }
             },
             {
-                "Koch Curve",
+                "Tree",
                 new List<Params>
                 {
-                    new Params(new List<double> {1 / 3, 0, 0, 1 / 3, 0, 0, 0.25}),
-                    new Params(new List<double> {1 / 6, -Math.Sqrt(3) / 6, Math.Sqrt(3) / 6, 1 / 6, 1 / 3, 0, 0.25}),
-                    new Params(new List<double>
-                        {1 / 6, Math.Sqrt(3) / 6, -Math.Sqrt(3) / 6, 1 / 6, 1 / 2, Math.Sqrt(3) / 6, 0.25}),
-                    new Params(new List<double> {1 / 3, 0, 0, 1 / 3, 0, 2 / 3, 0.25})
+                    new Params(new List<double>{0.1950, -0.4880, 0.3440, 0.4430, 0.4431, 0.2452, 0.2}),
+                    new Params(new List<double>{0.4620, 0.4140, -0.2520, 0.3610, 0.2511, 0.5692, 0.2}),
+                    new Params(new List<double>{-0.6370, 0.0000, 0.0000, 0.5010, 0.8562, 0.2512, 0.2}),
+                    new Params(new List<double>{-0.0350, 0.0700, -0.4690, 0.0220, 0.4884, 0.5069, 0.2}),
+                    new Params(new List<double>{-0.0580, -0.0700, 0.4530, -0.1110, 0.5976, 0.0969, 0.2})
+                }
+            },
+            {
+                "Christmas tree",
+                new List<Params>
+                {
+                    new Params(new List<double> {0.0, -0.5, 0.5, 0.0, 0.5, 0.0, 1.0 / 3}),
+                    new Params(new List<double> {0.0, 0.5, -0.5, 0.0, 0.5, 0.5, 1.0 / 3}),
+                    new Params(new List<double> {0.5, 0.0, 0.0, 0.5, 0.25, 0.5, 1.0 / 3})
+                }
+            },
+            {
+                "Spiral",
+                new List<Params>
+                {
+                    new Params(new List<double>{0.787879, -0.424242, 0.242424, 0.859848, 1.758647, 1.408065, 0.90}),
+                    new Params(new List<double>{-0.121212, 0.257576, 0.151515, 0.053030, -6.721654, 1.377236, 0.05}),
+                    new Params(new List<double>{0.181818, -0.136364, 0.090909, 0.181818, 6.086107, 1.568035, 0.05})
                 }
             }
         };
