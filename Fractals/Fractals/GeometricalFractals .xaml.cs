@@ -132,20 +132,23 @@ namespace Fractals
             DrawFractale();
         }
 
-        private void DrawFractale()
+        private async void DrawFractale()
         {
             bitmap = new SKBitmap((int)canvasView.Width, (int)canvasView.Height);
-            if (isDragon)
+            await Task.Run(() =>
             {
-                var start_x = canvasView.Width / 4;
-                var start_y = canvasView.Height / 4;
-                DrawDragonLine(bitmap, (int)depth - 1, Direction.Right, (float)start_x, (float)start_y, (float)canvasView.Width/2.8f, (float)canvasView.Height/2.8f);
-            }
-            else
-            {
-                DrawSnowflake(bitmap, (int)depth - 1);
-            }
-
+                if (isDragon)
+                {
+                    var start_x = canvasView.Width / 4;
+                    var start_y = canvasView.Height / 4;
+                    DrawDragonLine(bitmap, (int) depth - 1, Direction.Right, (float) start_x, (float) start_y,
+                        (float) canvasView.Width / 2.8f, (float) canvasView.Height / 2.8f);
+                }
+                else
+                {
+                    DrawSnowflake(bitmap, (int) depth - 1);
+                }
+            });
             canvasView.InvalidateSurface();
             countView.Text = ((int)depth).ToString();
         }
