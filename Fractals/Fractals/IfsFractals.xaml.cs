@@ -245,7 +245,6 @@ namespace Fractals
 
         private async Task BuildImage()
         {
-            //bitmap = bitmap.Resize(new SKSizeI((int) CanvasView.Width, (int) CanvasView.Height), SKFilterQuality.None);
             using (SKCanvas canvas = new SKCanvas(bitmap))
             {
                 canvas.Clear(SKColors.Transparent);
@@ -307,9 +306,9 @@ namespace Fractals
                         y1 = (imgy - 1) - (y - yMin) / (yMax - yMin) * (imgy - 1);
                         bitmap.SetPixel((int) x1, (int) y1, SKColor.Parse("#333333"));
                     }
-
-                    CanvasView.InvalidateSurface();
                 }
+
+                CanvasView.InvalidateSurface();
             });
         }
 
