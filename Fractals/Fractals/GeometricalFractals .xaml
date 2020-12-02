@@ -54,7 +54,7 @@
                          RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.30}"
                          RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.31}"
                          Maximum="25"
-                         Minimum="1"
+                         Minimum="0"
                          Value="5"
                          ThumbColor="Black"
                          MinimumTrackColor="#333333"
