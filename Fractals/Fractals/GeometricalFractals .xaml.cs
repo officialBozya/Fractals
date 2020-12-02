@@ -28,9 +28,36 @@ namespace Fractals
         private bool isDragon = false;
         private int depth = 5;
 
-        public void DragonCheckBoxClicked(object sender, StateChangedEventArgs e )
+
+        public GeometricalFractals()
         {
-            isDragon = (bool)e.IsChecked; 
+            InitializeComponent();
+            Content.FindByName<Button>("BackButton").Clicked += ToStart;
+            canvasView = Content.FindByName<SKCanvasView>("Canvas");
+            GeneratorDTheta = new List<float>();
+            float pi_over_3 = (float)(Math.PI / 3f);
+            GeneratorDTheta.Add(0);                 // Draw in the original direction.
+            GeneratorDTheta.Add(-pi_over_3);        // Turn -60 degrees.
+            GeneratorDTheta.Add(2 * pi_over_3);     // Turn 120 degrees.
+            GeneratorDTheta.Add(-pi_over_3);        // Turn -60 degrees.
+
+        }
+
+
+        private void OpenPopup(object sender, EventArgs e)
+        {
+            //picker.IsOpen = true;
+        }
+
+        private void ToStart(object sender, EventArgs e)
+        {
+            Navigation.PopModalAsync();
+        }
+
+
+        public void DragonCheckBoxClicked(object sender, StateChangedEventArgs e)
+        {
+            isDragon = (bool)e.IsChecked;
             DrawFractale();
 
         }
@@ -108,24 +135,6 @@ namespace Fractals
             Left
         }
 
-        public GeometricalFractals()
-        {
-            InitializeComponent();
-            canvasView = Content.FindByName<SKCanvasView>("Canvas");
-
-
-        }
-
-        private void OpenPopup(object sender, EventArgs e)
-        {
-            //picker.IsOpen = true;
-        }
-
-        private void ToStart(object sender, EventArgs e)
-        {
-            Navigation.PopModalAsync();
-        }
-
         void OnSliderValueChanged(object sender, ValueChangedEventArgs args)
         {
             depth = (int)args.NewValue;
@@ -168,12 +177,6 @@ namespace Fractals
 
             ScaleFactor = 1 / 2.8f;                   // Make subsegments 1/3 size.
 
-            GeneratorDTheta = new List<float>();
-            float pi_over_3 = (float)(Math.PI / 3f);
-            GeneratorDTheta.Add(0);                 // Draw in the original direction.
-            GeneratorDTheta.Add(-pi_over_3);        // Turn -60 degrees.
-            GeneratorDTheta.Add(2 * pi_over_3);     // Turn 120 degrees.
-            GeneratorDTheta.Add(-pi_over_3);        // Turn -60 degrees.
             // Draw the snowflake.
             for (int i = 1; i < Initiator.Count; i++)
             {
