@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+             xmlns:xForms="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+
+             xmlns:controls="clr-namespace:Fractals.Controls;assembly=Fractals"
+             x:Class="Fractals.GeometricalFractals"
+             Background="linear-gradient(270deg, #FFD5D5 0%, #FFEBEB 80%, #E3E3E3 100%);">
+    <ContentPage.Content>
+        <RelativeLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <BoxView RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.05}"
+                     RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.05}"
+                     RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.90}"
+                     RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.82}" 
+                     CornerRadius="31"
+                     Background="linear-gradient(270deg, #FFFFFF 0%, #FFD1D1 100%);"></BoxView>
+            <RelativeLayout RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.05}"
+                            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.05}"
+                            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.90}"
+                            RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.82}">
+                <Label RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.22}"
+                       RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.03}"
+                       FontFamily="Open Sans" FontSize="64" TextColor="#000000">Geometrical fractals</Label>
+                <forms:SKCanvasView RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.35}"
+                                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.15}"
+                                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.835}"
+                                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.9}"
+                                    PaintSurface="OnCanvasViewPaintSurface"
+                                    x:Name="Canvas">
+
+                </forms:SKCanvasView>
+                <buttons:SfRadioGroup x:Name="radioGroup"  RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.05}"
+                                  RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.15}"
+                                  RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.25}"
+                                    >
+
+                    <buttons:SfRadioButton x:Name="koch" Text="Koch curve"
+                                         IsChecked="True" StateChanged="KochCheckBoxClicked"/>
+                    <buttons:SfRadioButton x:Name="dragon" Text="Dragon curve"
+                                      StateChanged="DragonCheckBoxClicked"/>
+                </buttons:SfRadioGroup>
+
+                <Label  Text="Count of iteration:"
+                                       RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.1}"
+                                  RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.28}"
+                                  RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.25}"/>
+                <Label  x:Name="countView" Text=""
+                                       RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.24}"
+                                  RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.28}"
+                                  RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.25}"/>
+
+                <Slider  RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.02}"
+                                  RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.30}"
+                                  RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.31}"
+                         Maximum="25"
+                         Minimum="1"
+                         Value="5"
+                ValueChanged="OnSliderValueChanged" />
+                <Grid></Grid>
+            </RelativeLayout>
+            <Button RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.004}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.1}"
+                    x:Name="BackButton" Text="◄" FontFamily="Arial" TextColor="#FFE4E4" FontSize="42" Background="#ffffff" CornerRadius="32" WidthRequest="64" HeightRequest="64"></Button>
+            <Label RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.32}"
+                   RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.89}"
+                   FontFamily="Open Sans Hebrew" FontSize="72" VerticalOptions="EndAndExpand" 
+                   HorizontalOptions="CenterAndExpand" TextColor="#333333">Fractal is your life</Label>
+
+         
+        </RelativeLayout>
+    </ContentPage.Content>
+</ContentPage>

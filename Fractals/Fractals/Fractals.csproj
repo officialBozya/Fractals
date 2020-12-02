@@ -22,6 +22,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="GeometricalFractals .xaml.cs">
+      <DependentUpon>GeometricalFractals .xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Update="IfsFractals.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

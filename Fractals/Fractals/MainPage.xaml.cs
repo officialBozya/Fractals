@@ -15,11 +15,17 @@ namespace Fractals
         {
             InitializeComponent();
             ((SfButton)Content.FindByName("ToIfsFractalsButton")).Clicked += ToIfsFractals;
+            ((SfButton)Content.FindByName("ToFractalsButton")).Clicked += ToFractals;
         }
 
         public void ToIfsFractals(object sender, EventArgs eventArgs)
         {
             Navigation.PushModalAsync(new IfsFractals());
+        } 
+        
+        public void ToFractals(object sender, EventArgs eventArgs)
+        {
+            Navigation.PushModalAsync(new GeometricalFractals());
         }
     }
 }
