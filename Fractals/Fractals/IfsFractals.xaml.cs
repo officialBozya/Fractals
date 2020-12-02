@@ -26,7 +26,7 @@ namespace Fractals
         private Dictionary<string, List<Params>> Presets = new Dictionary<string, List<Params>>
         {
             {
-                "fern",
+                "Fern",
                 new List<Params>
                 {
                     new Params(new List<double> {0.85, 0.04, -0.04, 0.85, 0, 1.6, 0.81}),
@@ -36,11 +36,38 @@ namespace Fractals
                 }
             },
             {
-                "dragon",
+                "Dragon(I)",
                 new List<Params>
                 {
-                    new Params(new List<double>{0.824074,0.281428,-0.212346,0.864198,-1.88290,-0.110607,0.8}),
-                    new Params(new List<double>{0.088272,0.520988,-0.463889,-0.377778,0.785360,8.095795,0.2})
+                    new Params(new List<double> {0.824074, 0.281428, -0.212346, 0.864198, -1.88290, -0.110607, 0.8}),
+                    new Params(new List<double> {0.088272, 0.520988, -0.463889, -0.377778, 0.785360, 8.095795, 0.2})
+                }
+            },
+            {
+                "Dragon(II)",
+                new List<Params>
+                {
+                    new Params(new List<double> {0.5, -0.5, 0.5, 0.5, 0.0, 0.0, 0.5}),
+                    new Params(new List<double> {-0.5, -0.5, 0.5, -0.5, 1.0, 0.0, 0.5})
+                }
+            },
+            {
+                "C Fractal",
+                new List<Params>
+                {
+                    new Params(new List<double> {0.5, -0.5, 0.5, 0.5, 0.0, 0.0, 0.5}),
+                    new Params(new List<double> {0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5})
+                }
+            },
+            {
+                "Koch Curve",
+                new List<Params>
+                {
+                    new Params(new List<double> {1 / 3, 0, 0, 1 / 3, 0, 0, 0.25}),
+                    new Params(new List<double> {1 / 6, -Math.Sqrt(3) / 6, Math.Sqrt(3) / 6, 1 / 6, 1 / 3, 0, 0.25}),
+                    new Params(new List<double>
+                        {1 / 6, Math.Sqrt(3) / 6, -Math.Sqrt(3) / 6, 1 / 6, 1 / 2, Math.Sqrt(3) / 6, 0.25}),
+                    new Params(new List<double> {1 / 3, 0, 0, 1 / 3, 0, 2 / 3, 0.25})
                 }
             }
         };
@@ -54,7 +81,7 @@ namespace Fractals
             InitializeComponent();
             paramsList = new ObservableCollection<Params>();
             picker = Content.FindByName<SfPicker>("PresetPicker");
-            picker.ItemsSource = new List<String> {"koch", "dragon", "fern"};
+            picker.ItemsSource = Presets.Keys.ToList();
             Content.FindByName<Button>("BackButton").Clicked += ToStart;
             Content.FindByName<SfButton>("Popup").Clicked += OpenPopup;
             Content.FindByName<Button>("Ok").Clicked += OkClicked;
@@ -65,6 +92,8 @@ namespace Fractals
             entries.Add(Content.FindByName<StandardEntry>("EEntry"));
             entries.Add(Content.FindByName<StandardEntry>("FEntry"));
             entries.Add(Content.FindByName<StandardEntry>("PEntry"));
+            Clear.Clicked += ClearClicked;
+            picker.Closed += PickerClosed;
             DataTemplate dataTemplate = new DataTemplate(() =>
             {
 
@@ -139,10 +168,26 @@ namespace Fractals
             BindableLayout.SetItemTemplate(content4ScrolleLayout, dataTemplate);
             
             ParamsScrollView.Content = content4ScrolleLayout;
-            paramsList.Clear();
-            Presets["dragon"].ForEach(p => paramsList.Add(p));
-            BuildImage();
             CanvasView.PaintSurface += CanvasView_PaintSurface;
+        }
+
+        private void PickerClosed(object sender, EventArgs e)
+        {
+            var presetName = picker.SelectedItem.ToString();
+            paramsList.Clear();
+            Presets[presetName].ForEach(p => paramsList.Add(p));
+            BuildImage();
+        }
+
+
+        private void ClearClicked(object sender, EventArgs e)
+        {
+            paramsList.Clear();
+            using (SKCanvas canvas = new SKCanvas(bitmap))
+            {
+                canvas.Clear(SKColors.Transparent);
+            }
+            CanvasView.InvalidateSurface();
         }
 
         private void CanvasView_PaintSurface(object sender, SkiaSharp.Views.Forms.SKPaintSurfaceEventArgs e)
@@ -244,6 +289,8 @@ namespace Fractals
                         y1 = (imgy - 1) - (y - yMin) / (yMax - yMin) * (imgy - 1);
                         bitmap.SetPixel((int) x1, (int) y1, SKColor.Parse("#333333"));
                     }
+
+                    CanvasView.InvalidateSurface();
                 }
             });
         }
