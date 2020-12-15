@@ -23,6 +23,13 @@ namespace Fractals.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+
+            // Add the below line if you are using SfLinearProgressBar.
+            Syncfusion.XForms.iOS.ProgressBar.SfLinearProgressBarRenderer.Init();
+
+            // Add the below line if you are using SfCircularProgressBar.  
+            Syncfusion.XForms.iOS.ProgressBar.SfCircularProgressBarRenderer.Init();
+
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

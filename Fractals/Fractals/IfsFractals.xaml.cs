@@ -12,7 +12,6 @@ using Syncfusion.SfPicker.XForms;
 using Syncfusion.XForms.Buttons;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
-using Xamarin.Forms.Markup;
 using Xamarin.Forms.Xaml;
 
 namespace Fractals
@@ -184,9 +183,11 @@ namespace Fractals
             });
             BindableLayout.SetItemsSource(content4ScrolleLayout, paramsList);
             BindableLayout.SetItemTemplate(content4ScrolleLayout, dataTemplate);
-            
+
             ParamsScrollView.Content = content4ScrolleLayout;
             CanvasView.PaintSurface += CanvasView_PaintSurface;
+
+            ProgressBar.Maximum = 60;
         }
 
         private void PickerClosed(object sender, EventArgs e)
@@ -229,8 +230,8 @@ namespace Fractals
             {
                 entries.ForEach(entry => entry.Text = string.Empty);
             }
-
-            BuildImage();
+            if(Math.Abs(paramsList.Sum(p=>p.P)-1)<0.000001)
+                BuildImage();
         }
 
         private void OpenPopup(object sender, EventArgs e)
@@ -249,12 +250,20 @@ namespace Fractals
             {
                 canvas.Clear(SKColors.Transparent);
             }
+            CanvasView.InvalidateSurface();
             double x = 1/Math.Sqrt(2);
             double y = x;
             await Task.Run(() =>
             {
+                Dispatcher.BeginInvokeOnMainThread(() =>
+                {
+
+                    ProgressBar.SetProgress(0, 0, Easing.Linear);
+                    ProgressBar.IsVisible = true;
+                });
                 double xMin = bitmap.Width, xMax = 0, yMin = bitmap.Height, yMax = 0;
-                for (int i = 0; i < bitmap.Width * bitmap.Height; i++)
+                int iterationInOneCycle = bitmap.Width * bitmap.Height;
+                for (int i = 0; i < iterationInOneCycle; i++)
                 {
                     var params_ = GetParams();
                     double x1 = (x * params_.A + y * params_.B + params_.E);
@@ -269,6 +278,8 @@ namespace Fractals
                         yMin = y;
                     if (yMax < y)
                         yMax = y;
+                    if (i % (iterationInOneCycle / 10) == 0)
+                        Dispatcher.BeginInvokeOnMainThread(() => ProgressBar.Progress += 1);
                 }
 
                 int imgx;
@@ -305,10 +316,16 @@ namespace Fractals
                         x1 = (x - xMin) / (xMax - xMin) * (imgx - 1);
                         y1 = (imgy - 1) - (y - yMin) / (yMax - yMin) * (imgy - 1);
                         bitmap.SetPixel((int) x1, (int) y1, SKColor.Parse("#333333"));
-                    }
-                }
 
-                CanvasView.InvalidateSurface();
+                        if (i % (iterationInOneCycle / 10) == 0)
+                            Dispatcher.BeginInvokeOnMainThread(() => ProgressBar.Progress += 1);
+                    }
+
+                    CanvasView.InvalidateSurface();
+                }
+                Dispatcher.BeginInvokeOnMainThread(() => ProgressBar.IsVisible = false);
+
+                Dispatcher.BeginInvokeOnMainThread(() => ProgressBar.SetProgress(0,0,null));
             });
         }
 

@@ -68,6 +68,11 @@ namespace Fractals.UWP
                 assembliesToInclude.Add(typeof(SfBorderRenderer).GetTypeInfo().Assembly);
 
                 assembliesToInclude.Add(typeof(SfPickerRenderer).GetTypeInfo().Assembly);
+                // Add the below line if you are using SfLinearProgressBar.
+                assembliesToInclude.Add(typeof(Syncfusion.XForms.UWP.ProgressBar.SfLinearProgressRenderer).GetTypeInfo().Assembly);
+
+                // Add the below line if you are using SfCircularProgressBar. 
+                assembliesToInclude.Add(typeof(Syncfusion.XForms.UWP.ProgressBar.SfCircularProgressBarRenderer).GetTypeInfo().Assembly);
 
                 Xamarin.Forms.Forms.Init(e);
 

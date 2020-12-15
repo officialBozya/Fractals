@@ -42,7 +42,7 @@
                     </VisualStateGroup>
                 </VisualStateManager.VisualStateGroups>
             </buttons:SfButton>
-            <buttons:SfButton Text="button" >
+            <buttons:SfButton x:Name="ToColorModelsButton" Text="Color Models">
                 <VisualStateManager.VisualStateGroups>
                     <VisualStateGroup x:Name="CommonStates">
 

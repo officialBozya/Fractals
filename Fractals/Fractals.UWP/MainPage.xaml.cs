@@ -23,7 +23,7 @@ namespace Fractals.UWP
             this.InitializeComponent();
 
             SfPickerRenderer.Init();
-
+            
             LoadApplication(new Fractals.App());
         }
     }

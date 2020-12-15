@@ -14,18 +14,23 @@ namespace Fractals
         public MainPage()
         {
             InitializeComponent();
-            ((SfButton)Content.FindByName("ToIfsFractalsButton")).Clicked += ToIfsFractals;
-            ((SfButton)Content.FindByName("ToFractalsButton")).Clicked += ToFractals;
+            ToIfsFractalsButton.Clicked += ToIfsFractals;
+            ToFractalsButton.Clicked += ToFractals;
+            ToColorModelsButton.Clicked += ToColorModels;
         }
 
         public void ToIfsFractals(object sender, EventArgs eventArgs)
         {
             Navigation.PushModalAsync(new IfsFractals());
-        } 
-        
+        }
+
         public void ToFractals(object sender, EventArgs eventArgs)
         {
             Navigation.PushModalAsync(new GeometricalFractals());
+        }
+        public void ToColorModels(object sender, EventArgs eventArgs)
+        {
+            Navigation.PushModalAsync(new ColorModels());
         }
     }
 }

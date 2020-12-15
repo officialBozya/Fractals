@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -11,14 +11,22 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="SkiaSharp" Version="2.80.2" />
-    <PackageReference Include="SkiaSharp.Views.Forms" Version="2.80.2" />
-    <PackageReference Include="Syncfusion.Licensing" Version="18.3.0.52" />
-    <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="18.3.0.52" />
-    <PackageReference Include="Syncfusion.Xamarin.Core" Version="18.3.0.52" />
-    <PackageReference Include="Syncfusion.Xamarin.SfPicker" Version="18.3.0.52" />
-    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1687" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
+    <PackageReference Include="SkiaSharp" Version="2.80.3-preview.18" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="2.80.3-preview.18" />
+    <PackageReference Include="Skybrud.Colors" Version="1.0.2" />
+    <PackageReference Include="Syncfusion.Licensing" Version="18.3.0.53" />
+    <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="18.3.0.53" />
+    <PackageReference Include="Syncfusion.Xamarin.Core" Version="18.3.0.53" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPicker" Version="18.3.0.53" />
+    <PackageReference Include="Syncfusion.Xamarin.SfProgressBar" Version="18.3.0.53" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.1791-pre5" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.6.0-rc1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Mono.Android">
+      <HintPath>C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\MonoAndroid\v9.0\Mono.Android.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
@@ -28,6 +36,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="ColorModels.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="IfsFractals.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
