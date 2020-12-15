@@ -191,7 +191,7 @@ namespace Fractals
         {
             if (currectPoint != secondPoint)
             {
-                SecondPointLabel.Text = SelectedPointLabel.Text;
+                SecondPointLabel.Text = SecondPointLabel.Text.Replace($"{secondPoint.X}, {secondPoint.Y}",$"{currectPoint.X}, {currectPoint.Y}"); 
                 secondPoint = currectPoint;
             }
         }
@@ -200,7 +200,7 @@ namespace Fractals
         {
             if (currectPoint != firstPoint)
             {
-                FirstPointLabel.Text = SelectedPointLabel.Text;
+                FirstPointLabel.Text = FirstPointLabel.Text.Replace($"{firstPoint.X}, {firstPoint.Y}",$"{currectPoint.X}, {currectPoint.Y}");
                 firstPoint = currectPoint;
             }
         }
