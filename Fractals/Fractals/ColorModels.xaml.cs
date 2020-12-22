@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
@@ -17,6 +18,7 @@ namespace Fractals
     public partial class ColorModels : ContentPage
     {
         private Task currectTask;
+
         private string openedFileName;
         private SKBitmap bitmap1 = new SKBitmap();
         private SKBitmap bitmap2 = new SKBitmap();
@@ -36,6 +38,12 @@ namespace Fractals
             YellowSaturationSlider.ValueChanged += YellowSaturationSlider_ValueChanged;
             BrightnessSlider.ValueChanged += BrightnessSlider_ValueChanged;
             Save.Clicked += Save_Clicked;
+            BackButton.Clicked += ToStart;
+        }
+
+        private void ToStart(object sender, EventArgs e)
+        {
+            Navigation.PopModalAsync();
         }
 
         private void Save_Clicked(object sender, EventArgs e)
@@ -53,17 +61,10 @@ namespace Fractals
 
         private void BrightnessSlider_ValueChanged(object sender, ValueChangedEventArgs e)
         {
-            try
-            {
-                currectTask?.Dispose();
-            }
-            catch
-            {
-                BrightnessSlider.Value = e.OldValue;
-                return;
-            }
             currectTask = Task.Run(() =>
             {
+                var bitmap3 = bitmap2.Copy();
+
                 if (e.NewValue > 0)
                 {
                     for (int i = (int) firstPoint.Y; i < secondPoint.Y; i++)
@@ -82,7 +83,7 @@ namespace Fractals
 
                             SKColor newColor = new SKColor(rgbColor.Red, rgbColor.Green, rgbColor.Blue);
 
-                            bitmap2.SetPixel(j, i, newColor);
+                            bitmap3.SetPixel(j, i, newColor);
                         }
                     }
                 }
@@ -105,15 +106,17 @@ namespace Fractals
                             rgbColor = hslColor.ToRgb();
 
                             SKColor newColor = new SKColor(rgbColor.Red, rgbColor.Green, rgbColor.Blue);
-                            bitmap2.SetPixel(j, i, newColor);
+                            bitmap3.SetPixel(j, i, newColor);
                         }
                     }
                 }
 
                 else if (e.NewValue == 0)
                 {
-                    bitmap2 = bitmap1;
+                    bitmap3 = bitmap1.Copy();
                 }
+
+                bitmap2 = bitmap3.Copy();
 
                 CanvasViewOutput.InvalidateSurface();
             });
@@ -121,18 +124,10 @@ namespace Fractals
 
         private void YellowSaturationSlider_ValueChanged(object sender, ValueChangedEventArgs e)
         {
-            try
-            {
-                currectTask?.Dispose();
-            }
-            catch
-            {
-                YellowSaturationSlider.Value = e.OldValue;
-                return;
-            }
-
             currectTask = Task.Run(() =>
             {
+                var bitmap3 = bitmap2.Copy();
+
                 if (e.NewValue > 0)
                 {
                     for (int i = (int)firstPoint.Y; i < secondPoint.Y; i++)
@@ -151,7 +146,7 @@ namespace Fractals
 
                             SKColor newColor = new SKColor(rgbColor.Red, rgbColor.Green, rgbColor.Blue);
 
-                            bitmap2.SetPixel(j, i, newColor);
+                            bitmap3.SetPixel(j, i, newColor);
                         }
                     }
                 }
@@ -173,15 +168,17 @@ namespace Fractals
                             rgbColor = cmyColor.ToRgb();
 
                             SKColor newColor = new SKColor(rgbColor.Red, rgbColor.Green, rgbColor.Blue);
-                            bitmap2.SetPixel(j, i, newColor);
+                            bitmap3.SetPixel(j, i, newColor);
                         }
                     }
                 }
 
                 else if (e.NewValue == 0)
                 {
-                    bitmap2 = bitmap1;
+                    bitmap3 = bitmap1.Copy();
                 }
+
+                bitmap2 = bitmap3.Copy();
 
                 CanvasViewOutput.InvalidateSurface();
             });
