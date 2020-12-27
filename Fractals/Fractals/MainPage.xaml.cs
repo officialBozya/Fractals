@@ -17,6 +17,7 @@ namespace Fractals
             ToIfsFractalsButton.Clicked += ToIfsFractals;
             ToFractalsButton.Clicked += ToFractals;
             ToColorModelsButton.Clicked += ToColorModels;
+            ToFaqButton.Clicked += ToFAQ;
         }
 
         public void ToIfsFractals(object sender, EventArgs eventArgs)
@@ -31,6 +32,10 @@ namespace Fractals
         public void ToColorModels(object sender, EventArgs eventArgs)
         {
             Navigation.PushModalAsync(new ColorModels());
+        }
+        public void ToFAQ(object sender, EventArgs eventArgs)
+        {
+            Navigation.PushModalAsync(new FAQ());
         }
     }
 }

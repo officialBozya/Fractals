@@ -30,6 +30,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="FAQ.xaml.cs">
+      <DependentUpon>FAQ.xaml</DependentUpon>
+    </Compile>
     <Compile Update="GeometricalFractals .xaml.cs">
       <DependentUpon>GeometricalFractals .xaml</DependentUpon>
     </Compile>

@@ -86,7 +86,7 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Label Grid.Column="1" Grid.ColumnSpan="2" FontFamily="Open-Sans-Hebrew" FontSize="72" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" TextColor="#333333">Fractal is your life</Label>
-                <buttons:SfButton Grid.Column="3" Text="button" Style="{StaticResource smallButtonStyle}"></buttons:SfButton>
+                <buttons:SfButton x:Name="ToFaqButton" Grid.Column="3" Text="faq" Style="{StaticResource smallButtonStyle}"></buttons:SfButton>
             </Grid>
         </StackLayout>
     </ContentPage.Content>  
