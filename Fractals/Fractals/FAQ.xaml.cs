@@ -34,7 +34,7 @@ namespace Fractals
 
         private void OpenIntroInfo(object sender, EventArgs e)
         {
-            Content.FindByName<Label>("detailsView").Text = "Fractals - a program for working with geometrical and IFS fractal. It works with color models based on: HSL and CMYK working with a fragment of the image to transform the model and change the color attribute. The realization of the motion of a parallelogram introduced along its vertices along the trajectory Y = AX + B with simultaneous scaling and mirroring relative to this line.";
+            Content.FindByName<Label>("detailsView").Text = "Fractals - a program for working with geometrical and IFS fractal. It works with color models based on: HSL and CMYK working with a fragment of the image to transform the model and change the color attribute. Implementation of the affine transformation of a parallelogram introduced along its vertices into a mirror image to the line Y = AX + B.";
         }
 
 
@@ -64,11 +64,6 @@ namespace Fractals
         private void OpenWhatIsParallelogramInfo(object sender, EventArgs e)
         {
             Content.FindByName<Label>("detailsView").Text = "In Euclidean geometry, a parallelogram is a simple quadrilateral with two pairs of parallel sides. The opposite or facing sides of a parallelogram are of equal length and the opposite angles of a parallelogram are of equal measure. The congruence of opposite sides and opposite angles is a direct consequence of the Euclidean parallel postulate and neither condition can be proven without appealing to the Euclidean parallel postulate or one of its equivalent formulations.";
-        }
-
-        private void OpenPopup(object sender, EventArgs e)
-        {
-            //picker.IsOpen = true;
         }
 
         private void ToStart(object sender, EventArgs e)
