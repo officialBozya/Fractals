@@ -60,7 +60,7 @@
                     </VisualStateGroup>
                 </VisualStateManager.VisualStateGroups>
             </buttons:SfButton>
-            <buttons:SfButton Text="button">
+            <buttons:SfButton x:Name="ToAffineTransformationButton" Text="Affine Transformation">
                 <VisualStateManager.VisualStateGroups>
                     <VisualStateGroup x:Name="CommonStates">
 

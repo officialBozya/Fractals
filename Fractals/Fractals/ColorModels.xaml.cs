@@ -17,14 +17,14 @@ namespace Fractals
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ColorModels : ContentPage
     {
-        private Task currectTask;
+        private Task currentTask;
 
         private string openedFileName;
         private SKBitmap bitmap1 = new SKBitmap();
         private SKBitmap bitmap2 = new SKBitmap();
         private SKPoint firstPoint = new SKPoint(0, 0);
         private SKPoint secondPoint = new SKPoint(0, 0);
-        private SKPoint currectPoint = new SKPoint(0, 0);
+        private SKPoint currentPoint = new SKPoint(0, 0);
         public ColorModels()
         {
             InitializeComponent();
@@ -61,7 +61,7 @@ namespace Fractals
 
         private void BrightnessSlider_ValueChanged(object sender, ValueChangedEventArgs e)
         {
-            currectTask = Task.Run(() =>
+            currentTask = Task.Run(() =>
             {
                 var bitmap3 = bitmap2.Copy();
 
@@ -124,7 +124,7 @@ namespace Fractals
 
         private void YellowSaturationSlider_ValueChanged(object sender, ValueChangedEventArgs e)
         {
-            currectTask = Task.Run(() =>
+            currentTask = Task.Run(() =>
             {
                 var bitmap3 = bitmap2.Copy();
 
@@ -186,19 +186,19 @@ namespace Fractals
 
         private void SecondOk_Clicked(object sender, EventArgs e)
         {
-            if (currectPoint != secondPoint)
+            if (currentPoint != secondPoint)
             {
-                SecondPointLabel.Text = SecondPointLabel.Text.Replace($"{secondPoint.X}, {secondPoint.Y}",$"{currectPoint.X}, {currectPoint.Y}"); 
-                secondPoint = currectPoint;
+                SecondPointLabel.Text = SecondPointLabel.Text.Replace($"{secondPoint.X}, {secondPoint.Y}",$"{currentPoint.X}, {currentPoint.Y}"); 
+                secondPoint = currentPoint;
             }
         }
 
         private void FirstOk_Clicked(object sender, EventArgs e)
         {
-            if (currectPoint != firstPoint)
+            if (currentPoint != firstPoint)
             {
-                FirstPointLabel.Text = FirstPointLabel.Text.Replace($"{firstPoint.X}, {firstPoint.Y}",$"{currectPoint.X}, {currectPoint.Y}");
-                firstPoint = currectPoint;
+                FirstPointLabel.Text = FirstPointLabel.Text.Replace($"{firstPoint.X}, {firstPoint.Y}",$"{currentPoint.X}, {currentPoint.Y}");
+                firstPoint = currentPoint;
             }
         }
 
@@ -210,8 +210,8 @@ namespace Fractals
                 int x = (int) e.Location.X;
                 int y = (int) e.Location.Y;
                 SelectedPointLabel.Text =
-                    SelectedPointLabel.Text.Replace($"{currectPoint.X}, {currectPoint.Y}", $"{x}, {y}");
-                currectPoint = new SKPoint(x, y);
+                    SelectedPointLabel.Text.Replace($"{currentPoint.X}, {currentPoint.Y}", $"{x}, {y}");
+                currentPoint = new SKPoint(x, y);
                 OnSelected();
             }
         }
@@ -278,7 +278,7 @@ namespace Fractals
 
         void OnSelected()
         {
-            var color = bitmap1.GetPixel((int) currectPoint.X, (int) currectPoint.Y);
+            var color = bitmap1.GetPixel((int) currentPoint.X, (int) currentPoint.Y);
             RgbColor rgbColor = new RgbColor(color.Red, color.Green, color.Blue);
             var hslColor = rgbColor.ToHsl();
             var cmykColor = rgbColor.ToCmyk();

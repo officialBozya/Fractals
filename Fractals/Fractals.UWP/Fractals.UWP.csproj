@@ -144,6 +144,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Accord.Math">
+      <Version>3.8.2-alpha</Version>
+    </PackageReference>
     <PackageReference Include="SkiaSharp">
       <Version>2.80.3-preview.18</Version>
     </PackageReference>
@@ -157,23 +160,23 @@
       <Version>1.0.2</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Licensing">
-      <Version>18.3.0.53</Version>
+      <Version>18.4.0.31</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.Buttons">
-      <Version>18.3.0.53</Version>
+      <Version>18.4.0.31</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.Core">
-      <Version>18.3.0.53</Version>
+      <Version>18.4.0.31</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfPicker">
-      <Version>18.3.0.53</Version>
+      <Version>18.4.0.31</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfProgressBar">
-      <Version>18.3.0.53</Version>
+      <Version>18.4.0.31</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.1791-pre5" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.1829-pre6" />
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.11" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.6.0-rc1" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.6.1-preview1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fractals\Fractals.csproj">

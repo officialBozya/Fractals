@@ -17,6 +17,12 @@ namespace Fractals
             ToIfsFractalsButton.Clicked += ToIfsFractals;
             ToFractalsButton.Clicked += ToFractals;
             ToColorModelsButton.Clicked += ToColorModels;
+            ToAffineTransformationButton.Clicked += ToAffineTransformation;
+        }
+
+        private void ToAffineTransformation(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new AffineTransformation());
         }
 
         public void ToIfsFractals(object sender, EventArgs eventArgs)
