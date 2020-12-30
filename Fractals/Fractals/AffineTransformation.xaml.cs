@@ -74,11 +74,11 @@ namespace Fractals
                 {0, 1, 0}, 
                 {0, -bParam, 1}
             };
-            var radians = -Math.Atan(aParam);
+            var radians = Math.Atan(aParam);
             var firstRotationMatrix = new[,]
             {
-                {Math.Cos(radians), Math.Sin(radians), 0}, 
-                {-Math.Sin(radians), Math.Cos(radians), 0}, 
+                {Math.Cos(radians), -Math.Sin(radians), 0}, 
+                {Math.Sin(radians), Math.Cos(radians), 0}, 
                 {0, 0, 1}
             };
             var mirrorMatrix = new[,]
@@ -89,8 +89,8 @@ namespace Fractals
             };
             var secondRotationMatrix = new[,]
             {
-                {Math.Cos(radians), -Math.Sin(radians), 0},
-                {Math.Sin(radians), Math.Cos(radians), 0},
+                {Math.Cos(radians), Math.Sin(radians), 0},
+                {-Math.Sin(radians), Math.Cos(radians), 0},
                 {0, 0, 1}
             }; 
             var secondTranslateMatrix = new[,]
@@ -115,6 +115,24 @@ namespace Fractals
             SKCanvas canvas = surface.Canvas;
 
             canvas.Clear();
+            canvas.DrawLine(0, (float)GetYReverse(0.0), CanvasView.CanvasSize.Width, (float)GetYReverse(0.0),
+                new SKPaint { Color = SKColors.Black });
+            for (int i = 50; i < CanvasView.CanvasSize.Width; i += 50)
+            {
+                canvas.DrawText(SKTextBlob.Create($"{i}", new SKFont(SKTypeface.Default)), (float)GetXReverse(i),
+                    (float)GetYReverse(-15), new SKPaint { Color = SKColors.Black });
+                canvas.DrawText(SKTextBlob.Create($"{-i}", new SKFont(SKTypeface.Default)), (float)GetXReverse(-i),
+                    (float)GetYReverse(-15), new SKPaint { Color = SKColors.Black });
+            }
+            for (int i = 50; i < CanvasView.CanvasSize.Height; i += 50)
+            {
+                canvas.DrawText(SKTextBlob.Create($"{i}", new SKFont(SKTypeface.Default)), (float)GetXReverse(5),
+                    (float)GetYReverse(i), new SKPaint { Color = SKColors.Black });
+                canvas.DrawText(SKTextBlob.Create($"{-i}", new SKFont(SKTypeface.Default)), (float)GetXReverse(5),
+                    (float)GetYReverse(-i), new SKPaint { Color = SKColors.Black });
+            }
+            canvas.DrawLine((float)GetXReverse(0), 0, (float) GetXReverse(0), CanvasView.CanvasSize.Height,
+                new SKPaint { Color = SKColors.Black });
             canvas.DrawLine(0, (float) GetYReverse(Function(GetX(0))), CanvasView.CanvasSize.Width,
                 (float) GetYReverse(Function(GetX(CanvasView.CanvasSize.Width))), new SKPaint{Color = SKColors.Black});
             DrawParallelogram(canvas, aPoint, bPoint, cPoint, dPoint, SKColor.Parse("#333333")); 
@@ -127,7 +145,15 @@ namespace Fractals
             SKPoint bPoint = new SKPoint((float)GetXReverse(b.X), (float)GetYReverse(b.Y));
             SKPoint cPoint = new SKPoint((float)GetXReverse(c.X), (float)GetYReverse(c.Y));
             SKPoint dPoint = new SKPoint((float)GetXReverse(d.X), (float)GetYReverse(d.Y));
-            SKPaint paint = new SKPaint {Color = color};
+            SKPaint paint = new SKPaint {Color = color, TextSize = 16};
+            canvas.DrawText(SKTextBlob.Create($"A({a.X:N3}; {a.Y:N3})", new SKFont(SKTypeface.Default)), aPoint.X,
+                aPoint.Y, paint);
+            canvas.DrawText(SKTextBlob.Create($"B({b.X:N3}; {b.Y:N3})", new SKFont(SKTypeface.Default)), bPoint.X,
+                bPoint.Y, paint);
+            canvas.DrawText(SKTextBlob.Create($"C({c.X:N3}; {c.Y:N3})", new SKFont(SKTypeface.Default)), cPoint.X,
+                cPoint.Y, paint);
+            canvas.DrawText(SKTextBlob.Create($"D({d.X:N3}; {d.Y:N3})", new SKFont(SKTypeface.Default)), dPoint.X,
+                dPoint.Y, paint);
             canvas.DrawLine(aPoint, bPoint, paint);
             canvas.DrawLine(bPoint, cPoint, paint);
             canvas.DrawLine(cPoint, dPoint, paint);
